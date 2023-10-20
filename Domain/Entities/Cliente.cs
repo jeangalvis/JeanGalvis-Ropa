@@ -8,4 +8,6 @@ namespace Domain.Entities;
         public DateTime FechaRegistro { get; set; }
         public int IdMunicipiofk { get; set; }
         public Municipio Municipio { get; set; }
+        public ICollection<Venta> Ventas { get; set; }
+        public ICollection<Orden> Ordenes { get; set; }
     }
