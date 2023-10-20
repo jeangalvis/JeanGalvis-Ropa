@@ -8,4 +8,5 @@ namespace Domain.Entities;
         public int IdMunicipiofk { get; set; }
         public Municipio Municipio { get; set; }
         public ICollection<InsumoProveedor> InsumoProveedores { get; set; }
+        public ICollection<Insumo> Insumos { get; set; } = new HashSet<Insumo>();
     }

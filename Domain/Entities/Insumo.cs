@@ -7,5 +7,5 @@ namespace Domain.Entities;
         public int StockMax { get; set; }
         public ICollection<InsumoProveedor> InsumoProveedores { get; set; }
         public ICollection<InsumoPrenda> InsumoPrendas { get; set; }
-        
+        public ICollection<Proveedor> Insumos { get; set; } = new HashSet<Proveedor>();
     }
