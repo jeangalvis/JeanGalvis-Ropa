@@ -40,7 +40,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
            j =>
            {
-               j.ToTable("userRol");
+               j.ToTable("userRols");
                j.HasKey(t => new { t.IdUserfk, t.IdRolfk });
 
            });
