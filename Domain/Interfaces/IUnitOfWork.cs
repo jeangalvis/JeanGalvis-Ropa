@@ -6,6 +6,7 @@ namespace Domain.Interfaces;
         IColor Colores {get;}
         IDepartamento Departamentos {get;}
         IDetalleOrden DetalleOrdenes {get;}
+        IDetalleVenta DetalleVentas {get;}
         IEmpleado Empleados {get;}
         IEmpresa  Empresas {get;}
         IEstado Estados {get;}

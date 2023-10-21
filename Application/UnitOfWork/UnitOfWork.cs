@@ -83,6 +83,15 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         }
     }
 
+        public IDetalleVenta DetalleVentas{
+        get{
+            if(_detalleVenta == null){
+                _detalleVenta = new DetalleVentaRepository(context);
+            }
+            return _detalleVenta;
+        }
+    }
+
     public IEmpleado Empleados{
         get{
             if(_empleado == null){

@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "Entities",
         "Configurations",
-        "Migrations"
+        "Migrations",
+        "Controllers"
     ]
 }
