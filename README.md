@@ -69,3 +69,7 @@ Body en formato JSON
 
 El endpoint de la query 1 es
 `/api/Prenda/GetInsumosxPrenda`, pasar como parametro el id del codigo
+
+
+### todas las tablas tienen su CRUD y su versionado con paginacion
+###End
