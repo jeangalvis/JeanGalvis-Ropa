@@ -3,6 +3,7 @@ using API.Helpers;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -19,7 +20,7 @@ public class PrendaController : BaseApiController
         _mapper = mapper;
     }
     [HttpGet]
-    //[Authorize(Roles = "Administrator,Employee")]
+    [Authorize(Roles = "Administrator,Employee")]
     [MapToApiVersion("1.0")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -32,7 +33,7 @@ public class PrendaController : BaseApiController
     }
 
     [HttpGet("{id}")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<PrendaDto>> Get2(int id)
@@ -42,7 +43,7 @@ public class PrendaController : BaseApiController
     }
 
     [HttpPost]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Prenda>> Post(PrendaDto resultDto)
@@ -58,7 +59,7 @@ public class PrendaController : BaseApiController
         return CreatedAtAction(nameof(Post), new { id = resultDto.Id }, resultDto);
     }
     [HttpPut("{id}")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Prenda>> Put(int id, [FromBody] PrendaDto resultDto)
@@ -73,7 +74,7 @@ public class PrendaController : BaseApiController
         return result;
     }
     [HttpDelete("{id}")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Delete(int id)
@@ -90,7 +91,7 @@ public class PrendaController : BaseApiController
 
     [HttpGet]
     [MapToApiVersion("1.1")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Pager<PrendaDto>>> Getpag([FromQuery] Params resultParams)
@@ -101,7 +102,7 @@ public class PrendaController : BaseApiController
     }
 
     [HttpGet("GetInsumosxPrenda")]
-    //[Authorize(Roles = "Administrator,Employee")]
+    [Authorize(Roles = "Administrator,Employee")]
     [MapToApiVersion("1.0")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

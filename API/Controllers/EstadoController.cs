@@ -3,6 +3,7 @@ using API.Helpers;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -19,7 +20,7 @@ public class EstadoController : BaseApiController
         _mapper = mapper;
     }
     [HttpGet]
-    //[Authorize(Roles = "Administrator,Employee")]
+    [Authorize(Roles = "Administrator,Employee")]
     [MapToApiVersion("1.0")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -32,7 +33,7 @@ public class EstadoController : BaseApiController
     }
 
     [HttpGet("{id}")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<EstadoDto>> Get2(int id)
@@ -42,7 +43,7 @@ public class EstadoController : BaseApiController
     }
 
     [HttpPost]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Estado>> Post(EstadoDto resultDto)
@@ -58,7 +59,7 @@ public class EstadoController : BaseApiController
         return CreatedAtAction(nameof(Post), new { id = resultDto.Id }, resultDto);
     }
     [HttpPut("{id}")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Estado>> Put(int id, [FromBody] EstadoDto resultDto)
@@ -73,7 +74,7 @@ public class EstadoController : BaseApiController
         return result;
     }
     [HttpDelete("{id}")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Delete(int id)
@@ -90,7 +91,7 @@ public class EstadoController : BaseApiController
 
     [HttpGet]
     [MapToApiVersion("1.1")]
-    //[Authorize(Roles = "Administrator, Employee")]
+    [Authorize(Roles = "Administrator, Employee")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Pager<EstadoDto>>> Getpag([FromQuery] Params resultParams)

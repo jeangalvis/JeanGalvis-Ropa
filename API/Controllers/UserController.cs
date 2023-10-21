@@ -1,5 +1,6 @@
 using API.Dtos;
 using API.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -12,7 +13,7 @@ public class UserController : BaseApiController
         _userService = userService;
     }
     [HttpPost("register")]
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public async Task<ActionResult> RegisterAsync(RegisterDto model)
     {
         var result = await _userService.RegisterAsync(model);
@@ -28,7 +29,7 @@ public class UserController : BaseApiController
     }
 
     [HttpPost("addrole")]
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public async Task<IActionResult> AddRoleAsync(AddRoleDto model)
     {
         var result = await _userService.AddRolAsync(model);
