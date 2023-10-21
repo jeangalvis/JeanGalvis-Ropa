@@ -99,4 +99,17 @@ public class PrendaController : BaseApiController
         var lstResultDto = _mapper.Map<List<PrendaDto>>(result.registros);
         return new Pager<PrendaDto>(lstResultDto, result.totalRegistros, resultParams.PageIndex, resultParams.PageSize, resultParams.Search);
     }
+
+    [HttpGet("GetInsumosxPrenda")]
+    //[Authorize(Roles = "Administrator,Employee")]
+    [MapToApiVersion("1.0")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<InsumoxPrendaDto>>> Get3(int codigo)
+    {
+        var appointments = await _unitOfWork.Prendas
+                                    .GetInsumosxPrenda(codigo);
+
+        return _mapper.Map<List<InsumoxPrendaDto>>(appointments);
+    }
 }

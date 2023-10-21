@@ -34,4 +34,12 @@ public class PrendaRepository : GenericRepository<Prenda>, IPrenda
                                  .ToListAsync();
         return (totalRegistros, registros);
     }
+
+        public async Task<IEnumerable<Prenda>> GetInsumosxPrenda(int codigo){
+        return await _context.Prendas
+                                .Include(p => p.InsumoPrendas)
+                                .ThenInclude(p => p.Insumo)
+                                .Where(p => p.IdPrenda == codigo)
+                                .ToListAsync();
+    }
 }

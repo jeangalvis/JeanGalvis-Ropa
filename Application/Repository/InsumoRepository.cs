@@ -34,4 +34,5 @@ public class InsumoRepository : GenericRepository<Insumo>, IInsumo
                                  .ToListAsync();
         return (totalRegistros, registros);
     }
+
 }
